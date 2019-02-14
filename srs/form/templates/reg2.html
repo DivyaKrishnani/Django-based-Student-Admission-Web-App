@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+{%load staticfiles%}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<link rel="shortcut icon" href="{%static 'iiitnr.jpg'%}" />
+ <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #445368;
+}
+
+#regForm {
+  background-color: #ffffff;
+  margin: 100px auto;
+  font-family: Raleway;
+  padding: 40px;
+  width: 70%;
+  min-width: 300px;
+}
+
+h1 {
+  text-align: center;  
+}
+
+input {
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+}
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+.buttons {
+    background-color: #445368; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+button {
+  background-color: #445368;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  font-family: Raleway;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+.button4 {padding: 32px 16px;}
+
+#prevBtn {
+  background-color: #bbbbbb;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;  
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #445368;
+}
+
+.extra
+{
+  font-size: 15px;
+}
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+
+</style>
+<body>
+
+<a href = "https://www.iiitnr.ac.in/"><img class="imgRight" title="IIIT Naya Raipur" alt="IIIT Naya Raipur" src="https://www.iiitnr.ac.in/sites/all/themes/iiit/images/Headingwebsite.jpg" width="1300px"></a>
+
+<form id = "regForm" action="#" method = "POST" >
+         {% csrf_token %}
+ 
+ 
+  <div class="container">
+
+    <h1><b>Welcome! Please fill the application form to continue...</b></h1>
+    <p><strong>First Name: <input placeholder="First name"  name="fname"  required data-validation-required-message="Please fill in this field." type="text"></strong></p>
+    <p><strong>Last Name: <input placeholder="Last name"  name="lname" required data-validation-required-message="Please fill in this field." type="text"></strong></p>
+    <p><strong>Email: <input placeholder="Email ID"  name="email" required data-validation-required-message="Please fill in this field." type="email"></strong></p>
+    <p><strong>Contact number: <input placeholder="Contact number"  name="cno" required data-validation-required-message="Please fill in this field." type= "tel"></strong></p>
+    <span class="extra"><i>Please include country code.(e.g. '+91' for India)</i></span>
+    <p><strong>Aadhar number: <input placeholder="Aadhar number"  name="ano" required data-validation-required-message="Please fill in this field." type= "text"></strong></p>
+    <p><strong>Quota(CG/NTPC):<input placeholder="Quota"  name="quo" required data-validation-required-message="Please fill in this field." type= "text"></p>
+    <p><strong>Category(Unreserved/OBC/SC/ST):<input placeholder="Category"  name="cat" required data-validation-required-message="Please fill in this field." type= "text"></p>
+
+           
+    <p><strong>Date of Birth: </strong><input placeholder="DOB"  name="dob" required data-validation-required-message="Please fill in this field." type= "date"></p>
+    <p>Gender(Male/Female/Others):<input placeholder="Gender"  name="gen" required data-validation-required-message="Please fill in this field." type= "text"></p>
+
+          
+     <p><strong>Board of Education: </strong><input type="text" name="boe" required data-validation-required-message="Please fill in this field." placeholder="Board of Education"></p> 
+    <p><strong>Year of Passing(Class XII)</strong><input  type="text" name="yop" required data-validation-required-message="Please fill in this field." placeholder="Year of Passing(Class XII)"></p>
+    <p>Result Status(Passed/Awaited):<input placeholder="Passed/Awaited"  name="res" required data-validation-required-message="Please fill in this field." type= "text"></p>
+    <p><strong>Board Roll number:</strong><input placeholder="Board Roll number"  name="brno" required data-validation-required-message="Please fill in this field." type= "text" placeholder=""></p>
+    
+  
+    <h1><strong>Personal Details:</strong></h1>
+    <p>Mother's name:<input placeholder="Mother's name"  name="mna" required data-validation-required-message="Please fill in this field." type="text"></p>
+    <p>Mother's Contact number: <input placeholder="Mother's Contact number"  name="mno" required data-validation-required-message="Please fill in this field." type = "tel"></p>
+    <p>Mother's Occupation: <input placeholder="Mother's Occupation"  name="mo" type= "text"></p>
+    <p>Father's name:<input placeholder="Father's name"  name="fna" required data-validation-required-message="Please fill in this field." type="text"></p>
+    <p>Father's Contact number: <input placeholder="Father's Contact number"  name="fno" required data-validation-required-message="Please fill in this field." type = "tel"></p>
+    <p>Father's Occupation: <input placeholder="Father's Occupation"  name="fo" type= "text"></p>
+    <p>Are you a resident of India?(Yes/No)<input  name="ind" required data-validation-required-message="Please fill in this field." type= "text">
+  
+ 
+    <h1><strong>Address Details:</strong></h1>
+    <h4><strong>Correspondence Address:</strong></h4>
+    <p>Address Line 1:<input  type="text" name="ad1" required data-validation-required-message="Please fill in this field." placeholder="Enter address line 1"></p>
+    <p>Address Line 2:<input  type="text" name="ad2" placeholder="Enter address line 2"></p>
+    <p>Country:<input  type="text" name="con" required data-validation-required-message="Please fill in this field." placeholder="Country"></p>
+    <p>State:<input  type="text" name="state" required data-validation-required-message="Please fill in this field." placeholder="State"></p> 
+    <p>City:<input  type="text" name="city" required data-validation-required-message="Please fill in this field." placeholder="City"></p> 
+    <p>Pin Code:<input  type="text" name="pc" required data-validation-required-message="Please fill in this field." placeholder="Pin Code"></p> 
+           
+     <h4><strong>Permanent Address:</strong></h4>
+    <p>Address Line 1:<input  type="text" name="pad1" placeholder="Enter address line 1"></p>
+    <p>Address Line 2:<input  type="text" name="pad2" placeholder="Enter address line 2"></p>
+    <p>Country:<input  type="text" name="pcon" placeholder="Country"></p>
+    <p>State:<input  type="text" name="pstate" placeholder="State"></p> 
+    <p>City:<input  type="text" name="pcity" placeholder="City"></p> 
+    <p>Pin Code:<input  type="text" name="ppc" placeholder="Pin Code"></p> 
+    
+  
+    <h1><strong>Bank Details:</strong></h1>
+    <p>Name of the Bank: <input  type="text" name="bnk" required data-validation-required-message="Please fill in this field." placeholder="Name of the Bank"></p> 
+    <p>Name of the Account holder: <input  type="text"  name="acch" required data-validation-required-message="Please fill in this field." placeholder="Name of the Account holder"></p>   
+    <p>Account number: <input placeholder="Account number"  name="accno" required data-validation-required-message="Please fill in this field." type= "text"></p>
+    <p>IFS Code: <input  type="text" name="ifsc" required data-validation-required-message="Please fill in this field." placeholder="IFSC Code"></p>  
+
+     <h4><strong>Uploads:</strong></h4>
+                
+                <label for="picture"><strong>Upload a passport size photograph of the applicant:</strong></label>
+                <input type="file" name="pic" required data-validation-required-message="Please fill in this field." accept="file_extension" >
+                <br>
+               <br />
+                <!--<button class="button" type="submit" value="Upload">Upload</button>-->
+                
+                <span class="help-block">(.jpeg,.jpg,.pdf,.png formats only)</span>
+              
+           
+            
+              <label for="sign">U<strong>pload signature of the applicant:</strong></label>
+              <input type="file" name="sign" required data-validation-required-message="Please fill in this field." accept="file_extension" >
+              <br>
+               
+                <span class="help-block">(.jpeg,.jpg,.pdf,.png formats only)</span>
+              
+             
+              <label for="mark"><strong>Upload Xth marksheet of the applicant:</strong></label>
+              <input type="file" name="mark" required data-validation-required-message="Please fill in this field." accept="file_extension" >
+              <br>
+              
+                
+              <span class="help-block">(.jpeg,.jpg,.pdf,.png formats only)</span>
+              
+       
+
+  <br /> 
+     
+  <br />
+<h4><b>Declaration by the applicant:</b></h4>
+
+<input type="checkbox" name = "chk">
+ <p>1. I have checked all the entries made by me in the form. Any wrong information given by me will lead to cancellation of my admission and also penal action against me.<br />
+2. The information declared here is true and accurate to the best of my knowledge.<br />
+3. I further affirm that I have not been involved in any malpractice/use of unfair means(UFM) in any examination taken by me and no judicial proceeding is pending against me.<br />
+4. I understand that in the event of my not fulfilling all requirements, the International Institute of Information Technology, Naya Raipur may not consider/may cancel my candidature.<br />
+5. I declare that I will submit myself to the disciplinary jurisdiction of the authorities of the International Institute of Information Technology, Naya Raipur which may be vested with the powers to exercise discipline under the Act, the Ordinances and the Rules that may be framed by the Institute from time to time.</p>
+</div>
+  
+
+</form>
+
+<center><button class="button" type="submit" name="Submit" >Submit</button></center>
+
+
+</body>
+</html>
